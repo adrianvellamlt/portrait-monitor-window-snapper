@@ -12,16 +12,16 @@ ResizeWin(dir = 0)
     SysGet, MonitorWorkArea, MonitorWorkArea, %activeMonitor%
     
     width := (MonitorWorkAreaRight - MonitorWorkAreaLeft) + (padding * 2)
-    height := ((MonitorWorkAreaBottom - MonitorWorkAreaTop) / 2) + padding
+    height := ((MonitorWorkAreaBottom - MonitorWorkAreaTop) / 2)
 
     MonitorWorkAreaLeft := MonitorWorkAreaLeft - padding
 
-    if (dir == 1)
+    if (dir == 1) ; bottom
         _top := MonitorWorkAreaBottom - height
-    else if (dir == -1)
+    else if (dir == -1) ; top
         _top := MonitorWorkAreaTop
-
-    _top := _top + padding
+        
+    height := height + padding
 
     if (dir != 0)
         WinMove,A,, %MonitorWorkAreaLeft%, %_top%, %width%, %height%
